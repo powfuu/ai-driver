@@ -1,0 +1,4 @@
+<ion-content *ngIf="(store$ | async) as dgt">
+  <app-dgt-header [store]="dgt" [remainingTime]="remainingTime"></app-dgt-header>
+  <app-dgt-question [store]="dgt"></app-dgt-question>
+</ion-content>

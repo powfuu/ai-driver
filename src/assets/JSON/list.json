@@ -1,0 +1,58 @@
+[
+    {
+      "tipo": "AM",
+      "descripcion": "Ciclomotor y cuadriciclos ligeros (a partir de los 15 años)"
+    },
+    {
+      "tipo": "A1",
+      "descripcion": "Motocicletas de hasta 125 cc y 11 kW (a partir de los 16 años)"
+    },
+    {
+      "tipo": "A2",
+      "descripcion": "Motocicletas de hasta 35 kW (a partir de los 18 años)"
+    },
+    {
+      "tipo": "A",
+      "descripcion": "Motocicletas y triciclos de motor (a partir de los 20 años o después de dos años de posesión de un permiso A2)"
+    },
+    {
+      "tipo": "B",
+      "descripcion": "Automóviles particulares y vehículos ligeros hasta 3.500 kg (a partir de los 18 años)"
+    },
+    {
+      "tipo": "B+E",
+      "descripcion": "Automóviles particulares y vehículos ligeros con remolque (hasta 4.250 kg en total)"
+    },
+    {
+      "tipo": "C1",
+      "descripcion": "Vehículos de transporte de mercancías de hasta 7.500 kg (a partir de los 18 años)"
+    },
+    {
+      "tipo": "C1+E",
+      "descripcion": "Vehículos de transporte de mercancías de hasta 7.500 kg con remolque (hasta 12.000 kg en total)"
+    },
+    {
+      "tipo": "C",
+      "descripcion": "Vehículos de transporte de mercancías de más de 7.500 kg (a partir de los 21 años)"
+    },
+    {
+      "tipo": "C+E",
+      "descripcion": "Vehículos de transporte de mercancías de más de 7.500 kg con remolque (hasta 40.000 kg en total)"
+    },
+    {
+      "tipo": "D1",
+      "descripcion": "Vehículos de transporte de personas con capacidad de hasta 16 pasajeros (a partir de los 21 años)"
+    },
+    {
+      "tipo": "D1+E",
+      "descripcion": "Vehículos de transporte de personas con capacidad de hasta 16 pasajeros con remolque (hasta 12.000 kg en total)"
+    },
+    {
+      "tipo": "D",
+      "descripcion": "Vehículos de transporte de personas con capacidad para más de 16 pasajeros (a partir de los 24 años)"
+    },
+    {
+      "tipo": "D+E",
+      "descripcion": "Vehículos de transporte de personas con capacidad para más de 16 pasajeros con remolque (hasta 40.000 kg en total)"
+    }
+]

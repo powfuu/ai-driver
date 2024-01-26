@@ -1,0 +1,20 @@
+<ion-content>
+  <div class="question-container">
+    <p class="title-pregunta">{{getPreguntaActual()?.enunciado}}</p>
+    <div class="selector-pregunta">
+      <p (click)="select('A')" [class]="selected === 'A' ? 'selected' : ''"><span>A:</span>
+        {{getPreguntaActual()?.respuestas.A | removeCorrectAnswer}}</p>
+      <p (click)="select('B')" [class]="selected === 'B' ? 'selected' : ''"><span>B:</span>
+        {{getPreguntaActual()?.respuestas.B | removeCorrectAnswer}}</p>
+      <p (click)="select('C')" [class]="selected === 'C' ? 'selected' : ''"><span>C:</span>
+        {{getPreguntaActual()?.respuestas.C | removeCorrectAnswer}}</p>
+    </div>
+    <div class="flex-end-button">
+      <ion-button (click)="nextQuestion()" mode="ios">Siguiente pregunta</ion-button>
+    </div>
+    <div class="large-description-container">
+      <h1>Acerca de esta pregunta...</h1>
+      <p>{{getPreguntaActual()?.largeDescription}}</p>
+    </div>
+  </div>
+</ion-content>

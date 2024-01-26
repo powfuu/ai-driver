@@ -1,0 +1,17 @@
+<div class="header init">
+  <div (click)="salir()" id="salir-prueba">
+    <ion-icon name="chevron-back"></ion-icon>
+    Salir
+  </div>
+  <p class="header-title">Evaluación DGT</p>
+  <ion-button mode="ios" id="finalizar-prueba">
+    Finalizar
+  </ion-button>
+</div>
+<div class="timer-container slide-fromTop">
+  <p class="pregunta">Pregunta: {{store.indexPregunta}} de 10</p>
+  <div class="timer">
+    <p>{{ getMinutes() }}min {{ getSeconds() }}s</p>
+    <ion-icon name="timer-outline"></ion-icon>
+  </div>
+</div>

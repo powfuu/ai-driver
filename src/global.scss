@@ -24,3 +24,84 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+*{
+  font-family: Montserrat,Montserrat-Fixed,Avenir,"Avenir Next LT Pro",Corbel,"URW Gothic",source-sans-pro,sans-serif;
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  background: var(--ion-bg-color-font);
+}
+
+ion-button {
+  --border-radius: 8px !important;
+}
+
+.ios body {
+  margin-top: 45px !important;
+}
+
+.ios ion-tab-bar {
+  margin-bottom: 65px !important;
+}
+
+.ion-padding {
+  --padding-start: 0px !important;
+  --padding-end: 0px !important;
+  --padding-top: 5px !important;
+  --padding-bottom: 0px !important;
+}
+
+.secondary-button {
+  --background: #fff;
+  color: black;
+  border-radius: 8px;
+  border:1px solid black;
+}
+
+.hidden-container {
+animation: zoomOut .6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.init{
+  animation: zoomIn .5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+.slide-fromTop {
+  animation: translateFromTop .5s ease;
+}
+
+@keyframes zoomOut {
+0% {
+  transform: scale(1);
+  opacity: 1;
+}
+100% {
+  transform: scale(0);
+  opacity: 0;
+  display: none;
+}
+}
+
+@keyframes zoomIn {
+0% {
+  transform: scale(0);
+  opacity: 0;
+}
+100% {
+  transform: scale(1);
+  opacity: 1;
+}
+}
+
+@keyframes translateFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
