@@ -1,0 +1,69 @@
+<ion-content *ngIf="(history$ | async) as historyStore">
+  <div mode="ios" class="slide-fromTop" id="open-modal-carnet" expand="block">
+    <ion-icon (click)="back()" name="chevron-back-outline"></ion-icon>
+    <p>Historial de evaluaciones completadas</p>
+  </div>
+  <p class="titulo">Evaluaciones completadas</p>
+  <p class="desc">Se ha realizado un total de <span class="bold">{{historyStore?.history?.length}}</span> evaluaciones
+    en el cual has acertado <span class="bold">{{getAllRespuestasCorrectas(historyStore.history)}}</span> y has fallado
+    en <span class="bold">{{getAllRespuestasIncorrectas(historyStore.history)}}</span>.
+  </p>
+  @if(historyStore.history.length > 0) {
+  <div class="cards-container">
+    @for (item of historyStore.history; track $index) {
+    <div class="card" [id]="$index">
+      <p>Permiso de conducir tipo <span class="bold">{{item.tipoCarnet}}</span></p>
+      <p class="description-result">Puntuación: <span class="bold">{{ getRespuestasCorrectas(item) }}</span>/5</p>
+    </div>
+    <ion-modal [trigger]="$index" [initialBreakpoint]="0.7" [breakpoints]="[0.7, 0.8]">
+      <ng-template>
+        <div class="resumen-evaluacion">
+          <div class="header">
+            <div>
+              <ion-icon class="reader" name="reader"></ion-icon>
+              <p class="title-result">Resultados de la prueba</p>
+            </div>
+            <p class="description-result">Has acertado <span>{{ getRespuestasCorrectas(item) }}</span> de 5 respuestas!
+            </p>
+          </div>
+          <div *ngFor="let preguntaActual of getPreguntas(item)" class="question-container">
+            <p class="title-pregunta">
+              <span class="bold">{{ preguntaActual?.id }}. </span>{{ preguntaActual?.enunciado }}
+            </p>
+            <div class="selector-pregunta">
+              <p [ngClass]="{
+        'correct': preguntaActual?.result === 'A',
+        'incorrect': preguntaActual?.selected === 'A' && preguntaActual?.result !== 'A'
+      }">
+                <span>A:</span>
+                {{ (preguntaActual?.respuestas?.A || '') | removeCorrectAnswer }}
+              </p>
+              <p [ngClass]="{
+        'correct': preguntaActual?.result === 'B',
+        'incorrect': preguntaActual?.selected === 'B' && preguntaActual?.result !== 'B'
+      }">
+                <span>B:</span>
+                {{ (preguntaActual?.respuestas?.B || '') | removeCorrectAnswer }}
+              </p>
+              <p [ngClass]="{
+        'correct': preguntaActual?.result === 'C',
+        'incorrect': preguntaActual?.selected === 'C' && preguntaActual?.result !== 'C'
+      }">
+                <span>C:</span>
+                {{ (preguntaActual?.respuestas?.C || '') | removeCorrectAnswer }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </ion-modal>
+    }
+  </div>
+  } @else {
+  <div class="cards-container">
+    <div class="card">
+      <p>No se han realizado evaluaciones, empieza a realizar las pruebas y pasa de nuevo por el historial.</p>
+    </div>
+  </div>
+  }
+</ion-content>

@@ -7,14 +7,8 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { DgtTestPageModule } from '../dgt-test/dgt-test.module';
 
 @NgModule({
-  imports: [
-    IonicModule,
-    CommonModule,
-    FormsModule,
-    HomePageRoutingModule,
-    DgtTestPageModule
-  ],
+  imports: [IonicModule, CommonModule, FormsModule, HomePageRoutingModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  declarations: [HomePage]
+  declarations: [HomePage],
 })
-export class HomeModule { }
+export class HomeModule {}

@@ -12,7 +12,7 @@ import { OpenAiService } from 'src/core/services/openai/openai.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss']
+  styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
   openai = inject(OpenAiService);
@@ -27,11 +27,12 @@ export class HomePage implements OnInit {
   ngOnInit(): void {
     this.updateWithLocalStore();
     this.onLoadCarnets();
-    this.store$ = this.storage.select(state => state.store);
+    this.store$ = this.storage.select((state) => state.store);
   }
-
   onLoadCarnets(): void {
-    this.http.get<Carnet[]>('assets/JSON/list.json').subscribe(data => this.carnets = data);
+    this.http
+      .get<Carnet[]>('assets/JSON/list.json')
+      .subscribe((data) => (this.carnets = data));
   }
 
   updateWithLocalStore() {
@@ -43,13 +44,27 @@ export class HomePage implements OnInit {
   }
 
   startDGTSimulator(tipoCarnet: string): void {
-    this.loading.startLoader(`[IA] Generando Examen DGT - Carnet ${tipoCarnet}, esto puede demorar un poco...`).pipe(
-      mergeMap(() => this.openai.getApiResponse(`Examen DGT España, tipoCarnet: ${tipoCarnet}`, 'preguntas')),
-      finalize(() => this.loading.dismissLoader())
-    ).subscribe(async (data) => {
-      const preguntas = JSON.parse(data.choices[0].message.content);
-      await this.util.setPreguntas(preguntas);
-      this.router.navigate(['/tabs/home/dgt-test']);
-    })
+    this.loading
+      .startLoader(
+        `[IA] Generando Examen DGT - Carnet ${tipoCarnet}, [experimental] esto puede demorar un poco...`
+      )
+      .pipe(
+        mergeMap(() =>
+          this.openai.getApiResponse(
+            `Examen DGT España, tipoCarnet: ${tipoCarnet}`,
+            'preguntas'
+          )
+        ),
+        finalize(() => this.loading.dismissLoader())
+      )
+      .subscribe(async (data) => {
+        const preguntas = JSON.parse(data.choices[0].message.content);
+        await this.util.setPreguntas(preguntas);
+        this.router.navigate(['/tabs/home/dgt-test']);
+      });
+  }
+
+  irHistorial(): void {
+    this.router.navigate(['/tabs/home/historial-evaluaciones']);
   }
 }

@@ -2,11 +2,14 @@
   <div class="question-container">
     <p class="title-pregunta">{{getPreguntaActual()?.enunciado}}</p>
     <div class="selector-pregunta">
-      <p (click)="select('A')" [class]="selected === 'A' ? 'selected' : ''"><span>A:</span>
+      <p (click)="select('A', getPreguntaActual()?.id)"
+        [class]="getPreguntaActual()?.selected === 'A' ? 'selected' : ''"><span>A:</span>
         {{getPreguntaActual()?.respuestas.A | removeCorrectAnswer}}</p>
-      <p (click)="select('B')" [class]="selected === 'B' ? 'selected' : ''"><span>B:</span>
+      <p (click)="select('B', getPreguntaActual()?.id)"
+        [class]="getPreguntaActual()?.selected === 'B' ? 'selected' : ''"><span>B:</span>
         {{getPreguntaActual()?.respuestas.B | removeCorrectAnswer}}</p>
-      <p (click)="select('C')" [class]="selected === 'C' ? 'selected' : ''"><span>C:</span>
+      <p (click)="select('C', getPreguntaActual()?.id)"
+        [class]="getPreguntaActual()?.selected === 'C' ? 'selected' : ''"><span>C:</span>
         {{getPreguntaActual()?.respuestas.C | removeCorrectAnswer}}</p>
     </div>
     <div class="flex-end-button">

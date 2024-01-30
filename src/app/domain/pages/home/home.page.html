@@ -1,4 +1,5 @@
 <ion-content *ngIf="(store$ | async) as store">
+  <br />
   <ion-content class="ion-padding">
     <div mode="ios" class="slide-fromTop" id="open-modal-carnet" expand="block">
       <ion-icon name="cog"></ion-icon>
@@ -25,11 +26,14 @@
     </ion-modal>
     <div class="start-test-container">
       <ion-img src="/assets/test.svg" class="init" />
-      <h1 class="init">Simulador de Examen DGT - Carnet tipo <span>{{store.tipoCarnet}}</span></h1>
+      <h1 class="init">Simulador de Examen DGT (Rápido) - Carnet tipo <span>{{store.tipoCarnet}}</span></h1>
       <p class="init">Refuerza tus conocimientos en los test y permite que la IA te brinde los conocimientos necesarios,
         recuerda el
         maestro nace del ser constante y practicar mucho!</p>
       <ion-button mode="ios" class="init" (click)="startDGTSimulator(store.tipoCarnet)">Empezar prueba DGT</ion-button>
+      <ion-button color="light" mode="ios" class="historial-pruebas" (click)="irHistorial()"><ion-icon
+          name="list-outline"></ion-icon>Historial de
+        evaluaciones</ion-button>
     </div>
   </ion-content>
 </ion-content>

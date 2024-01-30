@@ -1,3 +1,41 @@
-<p>
-  dgt-result works!
-</p>
+<ion-content *ngIf="dgt?.preguntas?.preguntas?.length">
+  <div class="header">
+    <div>
+      <ion-icon class="reader" name="reader"></ion-icon>
+      <p class="title-result">Resultados de la prueba</p>
+    </div>
+    <p class="description-result">Has acertado <span>{{ getRespuestasCorrectas() }}</span> de 5 respuestas!</p>
+    <ion-button (click)="backHome()" class="volver-inicio">
+      <ion-icon name="home-outline"></ion-icon>
+      <p>Volver al inicio</p>
+    </ion-button>
+  </div>
+  <div *ngFor="let preguntaActual of dgt.preguntas.preguntas" class="question-container">
+    <p class="title-pregunta">
+      <span class="bold">{{ preguntaActual?.id }}. </span>{{ preguntaActual?.enunciado }}
+    </p>
+    <div class="selector-pregunta">
+      <p [ngClass]="{
+        'correct': preguntaActual?.result === 'A',
+        'incorrect': preguntaActual?.selected === 'A' && preguntaActual?.result !== 'A'
+      }">
+        <span>A:</span>
+        {{ (preguntaActual?.respuestas?.A || '') | removeCorrectAnswer }}
+      </p>
+      <p [ngClass]="{
+        'correct': preguntaActual?.result === 'B',
+        'incorrect': preguntaActual?.selected === 'B' && preguntaActual?.result !== 'B'
+      }">
+        <span>B:</span>
+        {{ (preguntaActual?.respuestas?.B || '') | removeCorrectAnswer }}
+      </p>
+      <p [ngClass]="{
+        'correct': preguntaActual?.result === 'C',
+        'incorrect': preguntaActual?.selected === 'C' && preguntaActual?.result !== 'C'
+      }">
+        <span>C:</span>
+        {{ (preguntaActual?.respuestas?.C || '') | removeCorrectAnswer }}
+      </p>
+    </div>
+  </div>
+</ion-content>

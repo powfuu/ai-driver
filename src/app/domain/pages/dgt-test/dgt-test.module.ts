@@ -10,15 +10,19 @@ import { DgtTestPage } from './dgt-test.page';
 import { DgtHeaderComponent } from '../../components/dgt-header/dgt-header.component';
 import { DgtQuestionComponent } from '../../components/dgt-question/dgt-question.component';
 import { AnswersPipe } from '../../pipes/answers.pipe';
+import { DgtResultComponent } from '../../components/dgt-result/dgt-result.component';
+import { HistorialEvaluacionesComponent } from '../historial-evaluaciones/historial-evaluaciones.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    DgtTestPageRoutingModule,
+  imports: [CommonModule, FormsModule, IonicModule, DgtTestPageRoutingModule],
+  declarations: [
+    DgtTestPage,
+    DgtHeaderComponent,
+    DgtQuestionComponent,
+    HistorialEvaluacionesComponent,
+    DgtResultComponent,
+    AnswersPipe,
   ],
-  declarations: [DgtTestPage, DgtHeaderComponent, DgtQuestionComponent, AnswersPipe],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class DgtTestPageModule { }
+export class DgtTestPageModule {}

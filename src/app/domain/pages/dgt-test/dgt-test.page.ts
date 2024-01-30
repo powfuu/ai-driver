@@ -15,17 +15,23 @@ export class DgtTestPage {
   router = inject(Router);
   storage = inject(Store<StoreModel>);
   interval!: any;
-  initialRemainingTime: number = 6000;
+  initialRemainingTime: number = 180;
   store$!: Observable<StoreState>;
   remainingTime: number = this.initialRemainingTime;
 
   constructor() {
-    this.store$ = this.storage.select(state => state.store);
+    this.store$ = this.storage.select((state) => state.store);
   }
 
   ionViewDidEnter() {
     this.remainingTime = this.initialRemainingTime;
-    this.util.crearAlertConfirmacion(true, 'Se ha iniciado el proceso de la evaluación, consiste en 10 preguntas y un máximo de 10 minutos en el cuál se desmotraran tus conocimientos y aprenderas más acerca de la evaluación, deseas comenzar con la evaluación?', this.handleConfirmar.bind(this), 'Proceso de la evaluación', this.handleCancelar.bind(this));
+    this.util.crearAlertConfirmacion(
+      true,
+      'Se ha iniciado el proceso de la evaluación rápida, consiste en 5 preguntas y un máximo de 3 minutos en el cuál se desmotraran tus conocimientos y aprenderas más acerca de la evaluación, deseas comenzar con la evaluación?',
+      this.handleConfirmar.bind(this),
+      'Proceso de la evaluación',
+      this.handleCancelar.bind(this)
+    );
   }
 
   ionViewDidLeave() {
@@ -59,7 +65,13 @@ export class DgtTestPage {
   }
 
   performActionOnTimerEnd() {
-    this.util.crearAlertConfirmacion(false, 'Se ha finalizado el proceso de evaluación, se hará una redirección a los resultados obtenidos.', () => this.router.navigate(['/tabs/home/dgt-test/dgt-result']), 'Proceso de la evaluación');
+    this.store$.subscribe((state) =>
+      this.util.crearAlertConfirmacion(
+        false,
+        'Se ha finalizado el proceso de evaluación, se hará una redirección a los resultados obtenidos.',
+        () => this.util.getTestResults(state),
+        'Proceso de la evaluación'
+      )
+    );
   }
-
 }
