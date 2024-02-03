@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<resources>
+    <string name="app_name">AutoEscuela: AI Driver</string>
+    <string name="title_activity_main">AutoEscuela: AI Driver</string>
+    <string name="package_name">ev.ai.driver</string>
+    <string name="custom_url_scheme">ev.ai.driver</string>
+</resources>
